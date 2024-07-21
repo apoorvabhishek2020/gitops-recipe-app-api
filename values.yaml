@@ -8,7 +8,7 @@ image:
   repository: apoorvabhishek/recipe-app-api_app
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "akv-0.0.2"
+  tag: "akv-0.0.3"
 
 imagePullSecrets: []
 nameOverride: ""
