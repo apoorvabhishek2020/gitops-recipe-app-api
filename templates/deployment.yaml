@@ -46,7 +46,7 @@ spec:
             - "/bin/bash"
             - "-c"
             - >-
-              "tail -f /dev/null"
+              "while true; do sleep 10000; done"
               # "python manage.py wait_for_db &&
               # python manage.py makemigrations &&
               # python manage.py migrate &&
