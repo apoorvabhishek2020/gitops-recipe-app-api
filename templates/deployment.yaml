@@ -42,15 +42,15 @@ spec:
               value:  postgresql
             - name: DB_PASS
               value:  Ptrreport12#
-          command:
-            - "/bin/sh"
-            - "-c"
-            - >-
-              "sleep 1000000"
-              # "python manage.py wait_for_db &&
-              # python manage.py makemigrations &&
-              # python manage.py migrate &&
-              # python manage.py runserver 0.0.0.0:8000"
+          # command:
+          #   - "/bin/sh"
+          #   - "-c"
+          #   - >-
+          #     "sleep 1000000"
+          #     # "python manage.py wait_for_db &&
+          #     # python manage.py makemigrations &&
+          #     # python manage.py migrate &&
+          #     # python manage.py runserver 0.0.0.0:8000"
           ports:
             - name: http
               containerPort: 8000
