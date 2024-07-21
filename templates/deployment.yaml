@@ -18,10 +18,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "..labels" . | nindent 8 }}
-        {{- with .Values.podLabels }}
-        {{- toYaml . | nindent 8 }}
-        {{- end }}
+        {{- include "..selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -44,33 +41,29 @@ spec:
             - name: DB_USER
               value:  postgresql
             - name: DB_PASS
-              value:  Ptrreport12#  
+              value:  Ptrreport12#
           command:
-            - /bin/bash
-            - -c
+            - "/bin/bash"
+            - "-c"
             - >-
-                 "python manage.py wait_for_db &&
-                  python manage.py makemigrations &&
-                  python manage.py migrate &&
-                  python manage.py runserver 0.0.0.0:8000"                                      
+              "python manage.py wait_for_db &&
+              python manage.py makemigrations &&
+              python manage.py migrate &&
+              python manage.py runserver 0.0.0.0:8000"
           ports:
             - name: http
               containerPort: 8000
               protocol: TCP
           # livenessProbe:
-          #   {{- toYaml .Values.livenessProbe | nindent 12 }}
+          #   httpGet:
+          #     path: /
+          #     port: http
           # readinessProbe:
-          #   {{- toYaml .Values.readinessProbe | nindent 12 }}
+          #   httpGet:
+          #     path: /
+          #     port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- with .Values.volumeMounts }}
-          volumeMounts:
-            {{- toYaml . | nindent 12 }}
-          {{- end }}
-      {{- with .Values.volumes }}
-      volumes:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
