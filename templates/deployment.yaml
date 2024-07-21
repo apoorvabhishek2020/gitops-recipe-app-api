@@ -42,6 +42,8 @@ spec:
               value:  postgresql
             - name: DB_PASS
               value:  Ptrreport12#
+          command: ["/bin/bash", "-c"]
+          args: ["python manage.py runserver 0.0.0.0:8000"]
           # command:
           #   - "/bin/sh"
           #   - "-c"
